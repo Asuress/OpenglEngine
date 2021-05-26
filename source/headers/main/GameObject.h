@@ -2,14 +2,14 @@
 #define OBJECT_H
 
 #include "graphics/IRenderable.h"
+#include "physics/IPhysical.h"
 
-class Object : public IRenderable {
+class GameObject : public IRenderable, public IPhysical {
 private:
-
 public:
     bool isVisible;
-    Object();
-    ~Object();
+    GameObject();
+    ~GameObject();
     virtual void collisionCheck() {};
     virtual void fixedUpdate() {};
     virtual void earlyUpdate() {};

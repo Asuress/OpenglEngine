@@ -8,7 +8,7 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 // ---------------------------------------Custom Headers----------------------------
-#include "main/Object.h"
+#include "main/GameObject.h"
 #include "main/Scene.h"
 
 class App {
@@ -18,6 +18,7 @@ public:
     void setName(const char*);
     bool init();
     void start();
+
 private:
     App();
     ~App();

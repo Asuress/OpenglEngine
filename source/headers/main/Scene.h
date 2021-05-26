@@ -2,17 +2,19 @@
 #define SCENE_H
 
 #include <list>
-#include "main/Object.h"
+#include "main/GameObject.h"
 
 class Scene {
 private:
-    std::list<Object> objects;
+    std::list<GameObject> objects;
+
 public:
     Scene();
     ~Scene();
     void loadScene();
-    void addObject(Object& obj);
-    std::list<Object>::iterator getObjectsIteratorBegin();
-    std::list<Object>::iterator getObjectsIteratorEnd();
+    void addObject(GameObject& obj);
+    void callFrame();
+    std::list<GameObject>::iterator getObjectsIteratorBegin();
+    std::list<GameObject>::iterator getObjectsIteratorEnd();
 };
 #endif
