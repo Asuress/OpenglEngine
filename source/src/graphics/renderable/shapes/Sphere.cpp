@@ -1,4 +1,4 @@
-#include "graphics/renderable/shapes/Sphere.h"
+#include "graphics/renderable/shapes/Sphere.hpp"
 
 Sphere::Sphere() {
     init(48);

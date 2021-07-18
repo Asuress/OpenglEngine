@@ -2,8 +2,8 @@
 #include <cmath>
 #include <vector>
 #include <glm/glm.hpp>
-#include "graphics/renderable/IRenderable.h"
-#include "graphics/renderable/shapes/Shape.h"
+#include "graphics/renderable/IRenderable.hpp"
+#include "graphics/renderable/shapes/Shape.hpp"
 
 class Sphere : public IRenderable, public Shape {
 private:

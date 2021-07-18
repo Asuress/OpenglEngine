@@ -1,4 +1,4 @@
-#include "main/Utils.h"
+#include "main/Utils.hpp"
 
 GLuint Utils::createShaderProgram(const char* vertexShaderSource, const char* fragmentShaderSource) {
 	GLuint vShader = glCreateShader(GL_VERTEX_SHADER);

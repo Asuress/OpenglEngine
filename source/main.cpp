@@ -13,12 +13,13 @@
 //--------------------------------------Including custom files------------------------------------------
 // #include "main/Utils.h"
 // #include "main/Renderable/Shapes/Sphere.h"
-#include "main/App.h"
+#include "main/App.hpp"
 
-int main(void) {
+int main(void)
+{
 	App* app = App::getApp();
-
-	if (!app->init()) {
+	if (!app->init())
+	{
 		return -1;
 	}
 	app->setName("App Name");
