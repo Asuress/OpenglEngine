@@ -2,8 +2,8 @@
 #include <cmath>
 #include <vector>
 #include <glm/glm.hpp>
-#include "graphics/IRenderable.h"
-#include "main/Renderable/Shapes/Shape.h"
+#include "graphics/renderable/IRenderable.h"
+#include "graphics/renderable/shapes/Shape.h"
 
 class Sphere : public IRenderable, public Shape {
 private:
@@ -26,4 +26,5 @@ public:
     std::vector<glm::vec3> getNormals();
     std::vector<glm::vec2> getTexCoords();
     void display() override;
+    ~Sphere();
 };

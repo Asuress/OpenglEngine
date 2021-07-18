@@ -1,7 +1,7 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef GAME_OBJECT_H
+#define GAME_OBJECT_H
 
-#include "graphics/IRenderable.h"
+#include "graphics/renderable/IRenderable.h"
 #include "physics/IPhysical.h"
 
 class GameObject : public IRenderable, public IPhysical {
