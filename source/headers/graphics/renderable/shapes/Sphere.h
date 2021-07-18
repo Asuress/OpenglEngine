@@ -26,5 +26,5 @@ public:
     std::vector<glm::vec3> getNormals();
     std::vector<glm::vec2> getTexCoords();
     void display() override;
-    ~Sphere();
+    ~Sphere() {};
 };
