@@ -27,7 +27,7 @@ int main(void)
 	while (!glfwWindowShouldClose(window.getGLFWwindow()))
 	{
 		window.clear(0.0, 0.15, 0.001 * i, 1.0);
-		shader->bind();
+		shader->useProgram();
 		window.swapBuffers();
 		i++;
 		glfwPollEvents();
