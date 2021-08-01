@@ -13,7 +13,7 @@ file(GLOB
 SOIL2_SOURCES "dependencies/SOIL2/src/SOIL2/*.c" "dependencies/SOIL2/src/*.cpp"
 )
 
-add_library(SOIL2 STATIC ${SOIL2_SOURCES})
+# add_library(SOIL2 STATIC ${SOIL2_SOURCES})
 
 add_compile_definitions(GLEW_STATIC)
 
@@ -22,7 +22,7 @@ include_directories(${PROJECT_SOURCE_DIR}/dependencies/SOIL2/src)
 include_directories(${PROJECT_SOURCE_DIR}/source/headers)
 
 link_directories(${PROJECT_SOURCE_DIR}/dependencies/lib)
-link_directories(${PROJECT_SOURCE_DIR}/dependencies/bin)
+# link_directories(${PROJECT_SOURCE_DIR}/dependencies/bin)
 
 add_executable(${PROJECT_NAME} ${CPP_SOURCES})
 

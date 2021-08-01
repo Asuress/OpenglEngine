@@ -14,16 +14,34 @@
 // #include "main/Utils.h"
 // #include "main/Renderable/Shapes/Sphere.h"
 #include "main/App.hpp"
+#include "graphics/Window.hpp"
+#include "graphics/ShaderProgram.hpp"
 
 int main(void)
 {
-	App* app = App::getApp();
-	if (!app->init())
+	Window window = Window(800, 600, "Title");
+	int i = 0;
+	std::string str = ShaderProgram::readShaderSource("../source/src/graphics/shaders/fragShader.frag");
+	// std::cout << str << std::endl;
+	ShaderProgram* shader = new ShaderProgram(str, str, str);
+	while (!glfwWindowShouldClose(window.getGLFWwindow()))
 	{
-		return -1;
+		window.clear(0.0, 0.15, 0.001 * i, 1.0);
+		shader->bind();
+		window.swapBuffers();
+		i++;
+		glfwPollEvents();
 	}
-	app->setName("App Name");
-	app->start();
-	std::cout << "Hey" << std::endl;
-	return 0;
+
+	glfwTerminate();
+	exit(EXIT_SUCCESS);
+
+	// App* app = App::getApp();
+	// app->setName("App Name");
+	// if (!app->init())
+	// {
+	// 	return -1;
+	// }
+	// app->start();
+	// return 0;
 }
