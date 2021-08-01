@@ -19,7 +19,7 @@ public:
     ShaderProgram();
     ~ShaderProgram();
 
-    void bind();
+    void useProgram();
     void loadShader(std::string shaderSource, GLenum type);
     GLuint getProgram();
     static std::string readShaderSource(std::string filePath);

@@ -89,7 +89,7 @@ void ShaderProgram::loadShader(std::string shaderSource, GLenum shaderType)
     }
 }
 
-void ShaderProgram::bind()
+void ShaderProgram::useProgram()
 {
     glUseProgram(glProgram);
 }
