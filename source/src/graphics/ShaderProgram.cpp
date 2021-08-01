@@ -58,6 +58,8 @@ ShaderProgram::~ShaderProgram()
     glDeleteShader(geometryShader);
     glDetachShader(glProgram, fragmentShader);
     glDeleteShader(fragmentShader);
+    glDetachShader(glProgram, tessellationShader);
+    glDeleteShader(tessellationShader);
     glDeleteProgram(glProgram);
 }
 
