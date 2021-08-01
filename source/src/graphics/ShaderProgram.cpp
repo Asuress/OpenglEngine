@@ -61,25 +61,23 @@ ShaderProgram::~ShaderProgram()
     glDeleteProgram(glProgram);
 }
 
-void ShaderProgram::loadShader(std::string shaderSource, GLenum shaderType)
+void ShaderProgram::loadShader(std::string& shaderSource, GLenum shaderType)
 {
+    const char* src = shaderSource.c_str();
     switch (shaderType)
     {
     case GL_VERTEX_SHADER:
         vertexShader = glCreateShader(shaderType);
-        const char* src = shaderSource.c_str();
         glShaderSource(vertexShader, 1, &src, NULL);
         glCompileShader(vertexShader);
         break;
     case GL_GEOMETRY_SHADER:
         geometryShader = glCreateShader(shaderType);
-        auto src = shaderSource.c_str();
         glShaderSource(geometryShader, 1, &src, NULL);
         glCompileShader(geometryShader);
         break;
     case GL_FRAGMENT_SHADER:
         fragmentShader = glCreateShader(shaderType);
-        auto src = shaderSource.c_str();
         glShaderSource(fragmentShader, 1, &src, NULL);
         glCompileShader(fragmentShader);
         break;
