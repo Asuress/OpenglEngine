@@ -2,7 +2,7 @@
 #define SCENE_H
 
 #include <list>
-#include "main/GameObject.h"
+#include "main/GameObject.hpp"
 
 class Scene {
 private:

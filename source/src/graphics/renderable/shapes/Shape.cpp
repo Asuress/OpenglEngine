@@ -1,4 +1,4 @@
-#include "graphics/renderable/shapes/Shape.h"
+#include "graphics/renderable/shapes/Shape.hpp"
 
 Shape::Shape() {}
 

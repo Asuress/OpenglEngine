@@ -8,10 +8,11 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 // ---------------------------------------Custom Headers----------------------------
-#include "main/GameObject.h"
-#include "main/Scene.h"
+#include "main/GameObject.hpp"
+#include "main/Scene.hpp"
 
-class App {
+class App
+{
 public:
     static App* getApp();
     const char* getAppName();

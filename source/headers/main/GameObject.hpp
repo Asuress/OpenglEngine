@@ -1,8 +1,8 @@
 #ifndef GAME_OBJECT_H
 #define GAME_OBJECT_H
 
-#include "graphics/renderable/IRenderable.h"
-#include "physics/IPhysical.h"
+#include "graphics/renderable/IRenderable.hpp"
+#include "physics/IPhysical.hpp"
 
 class GameObject : public IRenderable, public IPhysical {
 private:
