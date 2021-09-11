@@ -48,6 +48,10 @@ ShaderProgram::ShaderProgram(std::string& vShaderSource, std::string& gShaderSou
 
 ShaderProgram::ShaderProgram()
 {
+    glProgram = glCreateProgram();
+    if (Utils::checkOpenGLError()) {
+        Utils::printProgramLog(glProgram);
+    }
 }
 
 ShaderProgram::~ShaderProgram()
@@ -72,26 +76,48 @@ void ShaderProgram::loadShader(std::string& shaderSource, GLenum shaderType)
         vertexShader = glCreateShader(shaderType);
         glShaderSource(vertexShader, 1, &src, NULL);
         glCompileShader(vertexShader);
+        glAttachShader(glProgram, vertexShader);
         break;
     case GL_GEOMETRY_SHADER:
         geometryShader = glCreateShader(shaderType);
         glShaderSource(geometryShader, 1, &src, NULL);
         glCompileShader(geometryShader);
+        glAttachShader(glProgram, geometryShader);
         break;
     case GL_FRAGMENT_SHADER:
         fragmentShader = glCreateShader(shaderType);
         glShaderSource(fragmentShader, 1, &src, NULL);
         glCompileShader(fragmentShader);
+        glAttachShader(glProgram, fragmentShader);
         break;
 
     default:
         break;
+    }
+    if (Utils::checkOpenGLError()) {
+        Utils::printProgramLog(glProgram);
+    }
+    if (Utils::checkOpenGLError()) {
+        Utils::printShaderLog(vertexShader);
+        Utils::printShaderLog(geometryShader);
+        Utils::printShaderLog(fragmentShader);
+    }
+}
+
+void ShaderProgram::linkProgram()
+{
+    glLinkProgram(glProgram);
+    if (Utils::checkOpenGLError()) {
+        Utils::printProgramLog(glProgram);
     }
 }
 
 void ShaderProgram::useProgram()
 {
     glUseProgram(glProgram);
+    if (Utils::checkOpenGLError()) {
+        Utils::printProgramLog(glProgram);
+    }
 }
 
 GLuint ShaderProgram::getProgram()
