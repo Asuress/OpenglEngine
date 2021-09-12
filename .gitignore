@@ -15,6 +15,7 @@ build
 
 # vs code files
 .vscode
+OGLGameEngine.code-workspace
 
 # binary files
 *.exe

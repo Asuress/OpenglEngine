@@ -1,47 +1,53 @@
-//--------------------------------------Including opengl libs-------------------------------------------
-// #include <GL/glew.h>
-// #include <GLFW/glfw3.h>
-// #include <glm/glm.hpp>
-// #include <glm/gtc/type_ptr.hpp>
-// #include <glm/gtc/matrix_transform.hpp>
 //--------------------------------------Including default libs------------------------------------------
-// #include <string>
 #include <iostream>
-// #include <fstream>
-// #include <cmath>
-// #include <stack>
 //--------------------------------------Including custom files------------------------------------------
-// #include "main/Utils.h"
-// #include "main/Renderable/Shapes/Sphere.h"
 #include "main/App.hpp"
 #include "graphics/Window.hpp"
 #include "graphics/ShaderProgram.hpp"
+#include "main/Vertex.hpp"
+#include "graphics/Mesh.hpp"
 
 int main(void)
 {
 	Window window = Window(800, 600, "Title");
-	int i = 0;
-	std::string str = ShaderProgram::readShaderSource("../source/src/graphics/shaders/fragShader.frag");
-	// std::cout << str << std::endl;
-	ShaderProgram* shader = new ShaderProgram(str, str, str);
+	std::string fSrc = ShaderProgram::readShaderSource("../source/src/graphics/shaders/fragShader.frag");
+	std::string vSrc = ShaderProgram::readShaderSource("../source/src/graphics/shaders/vertShader.vert");
+	ShaderProgram* shader = new ShaderProgram();
+	shader->loadShader(fSrc, GL_FRAGMENT_SHADER);
+	shader->loadShader(vSrc, GL_VERTEX_SHADER);
+	shader->linkProgram();
+
+	float vertices[] = {
+		-0.5f, -0.5f, 0.0f,	// левая вершина
+		0.5f, -0.5f, 0.0f,	// правая вершина
+		0.0f, 0.5f, 0.0f,	// верхняя вершина
+	};
+	// flip by X and Y axis
+	float vertices2[] = {
+		0.0f, 0.5f, 0.0f,	// upper left
+		1.0f, 0.5f, 0.0f,	// upper right
+		0.5f, -0.5f, 0.0f	// lower
+	};
+
+	// std::cout << sizeof(vertices) << std::endl;
+
+	Mesh* mesh = new Mesh(vertices, sizeof(vertices) / sizeof(float));
+	Mesh* mesh2 = new Mesh(vertices2, sizeof(vertices2) / sizeof(float));
+
 	while (!glfwWindowShouldClose(window.getGLFWwindow()))
 	{
-		window.clear(0.0, 0.15, 0.001 * i, 1.0);
+		window.clear(0.0, 0.0, 0.0, 1.0);
+		// glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		// glClear(GL_COLOR_BUFFER_BIT);
 		shader->useProgram();
+		mesh->draw();
+		mesh2->draw();
+		// glBindVertexArray(vao[0]);
+		// glDrawArrays(GL_TRIANGLES, 0, 3);
+
 		window.swapBuffers();
-		i++;
-		glfwPollEvents();
 	}
 
 	glfwTerminate();
 	exit(EXIT_SUCCESS);
-
-	// App* app = App::getApp();
-	// app->setName("App Name");
-	// if (!app->init())
-	// {
-	// 	return -1;
-	// }
-	// app->start();
-	// return 0;
 }
