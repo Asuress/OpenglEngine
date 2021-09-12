@@ -6,7 +6,6 @@
 //---------------------include OGL libs----------------------------------------
 #include <GL/glew.h>
 #include "main/Utils.hpp"
-// #include <GLFW/glfw3.h>
 
 class Mesh
 {

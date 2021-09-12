@@ -18,8 +18,7 @@ Mesh::Mesh(float* vertices, int numVertices, GLenum mode)
     glBindVertexArray(0);
 
     if (Utils::checkOpenGLError()) {
-        // Utils::printLog();
-        std::cout << "Error" << std::endl;
+        std::cout << "Mesh creation error" << std::endl;
     }
 }
 
@@ -43,10 +42,5 @@ void Mesh::setVertices(std::vector<Vertex> newVertices)
 void Mesh::draw()
 {
     glBindVertexArray(vao[0]);
-    // glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
-
     glDrawArrays(GL_TRIANGLES, 0, 3);
-
-    // glBindVertexArray(0);
-    // glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
