@@ -44,8 +44,8 @@ int main(void)
 		mesh2->draw();
 		// glBindVertexArray(vao[0]);
 		// glDrawArrays(GL_TRIANGLES, 0, 3);
-
 		window.swapBuffers();
+		window.pollEvents();
 	}
 
 	glfwTerminate();
