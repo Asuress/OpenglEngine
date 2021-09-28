@@ -6,6 +6,7 @@
 #include "graphics/ShaderProgram.hpp"
 #include "main/Vertex.hpp"
 #include "graphics/Mesh.hpp"
+#include "graphics/renderable/UI/Button.hpp"
 
 int main(void)
 {
@@ -29,21 +30,22 @@ int main(void)
 		0.5f, -0.5f, 0.0f	// lower
 	};
 
-	// std::cout << sizeof(vertices) << std::endl;
-
 	Mesh* mesh = new Mesh(vertices, sizeof(vertices) / sizeof(float));
 	Mesh* mesh2 = new Mesh(vertices2, sizeof(vertices2) / sizeof(float));
+
+	Button button = Button(2, 1, glm::vec3(0, 0, 0));
 
 	while (!glfwWindowShouldClose(window.getGLFWwindow()))
 	{
 		window.clear(0.0, 0.0, 0.0, 1.0);
-		// glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		// glClear(GL_COLOR_BUFFER_BIT);
+
+		shader->linkProgram();
 		shader->useProgram();
 		mesh->draw();
 		mesh2->draw();
-		// glBindVertexArray(vao[0]);
-		// glDrawArrays(GL_TRIANGLES, 0, 3);
+
+		button.display();
+
 		window.swapBuffers();
 		window.pollEvents();
 	}
