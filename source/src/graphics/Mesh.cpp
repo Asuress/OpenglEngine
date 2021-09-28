@@ -2,7 +2,8 @@
 
 Mesh::Mesh(float* vertices, int numVertices, GLenum mode)
 {
-    this->vertices = vertices;
+    this->vertices = std::make_unique<float>();
+    this->vertices.reset(vertices);
 
     glGenVertexArrays(1, vao);
     glGenBuffers(2, vbo);
@@ -34,13 +35,18 @@ Mesh::~Mesh()
 }
 
 
-void Mesh::setVertices(std::vector<Vertex> newVertices)
+void Mesh::setVertices(float* newVertices)
 {
     // vertices = newVertices;
 }
 
-void Mesh::draw()
+float* Mesh::getVertices()
+{
+    return vertices.get();
+}
+
+void Mesh::draw(GLenum mode, GLuint verticesCount)
 {
     glBindVertexArray(vao[0]);
-    glDrawArrays(GL_TRIANGLES, 0, 3);
+    glDrawArrays(mode, 0, verticesCount);
 }

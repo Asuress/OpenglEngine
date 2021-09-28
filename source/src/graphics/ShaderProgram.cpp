@@ -96,8 +96,6 @@ void ShaderProgram::loadShader(std::string& shaderSource, GLenum shaderType)
     }
     if (Utils::checkOpenGLError()) {
         Utils::printProgramLog(glProgram);
-    }
-    if (Utils::checkOpenGLError()) {
         Utils::printShaderLog(vertexShader);
         Utils::printShaderLog(geometryShader);
         Utils::printShaderLog(fragmentShader);
@@ -109,14 +107,23 @@ void ShaderProgram::linkProgram()
     glLinkProgram(glProgram);
     if (Utils::checkOpenGLError()) {
         Utils::printProgramLog(glProgram);
+        Utils::printShaderLog(vertexShader);
+        Utils::printShaderLog(fragmentShader);
+        Utils::printShaderLog(geometryShader);
     }
 }
 
 void ShaderProgram::useProgram()
 {
+    if (Utils::checkOpenGLError()) {
+        Utils::printProgramLog(glProgram);
+    }
     glUseProgram(glProgram);
     if (Utils::checkOpenGLError()) {
         Utils::printProgramLog(glProgram);
+        Utils::printShaderLog(vertexShader);
+        Utils::printShaderLog(fragmentShader);
+        Utils::printShaderLog(geometryShader);
     }
 }
 

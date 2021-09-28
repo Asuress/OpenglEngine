@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.0)
 project(Engine VERSION 0.1.0 LANGUAGES CXX C)
 
 set(CMAKE_BUILD_TYPE Debug)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -Wall")
 
 file(GLOB_RECURSE
 CPP_SOURCES "source/*.cpp"
